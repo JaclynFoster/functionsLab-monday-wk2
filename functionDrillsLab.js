@@ -299,21 +299,18 @@ let loser = 'Glimmer'
 //CODE HERE
 function theEliminator(arr, loserName) {
   let newArr = [];
-for(let i = 0; i < contestants.length; i++) {
-  //console.log(contestants);
-  if(contestants.includes(loser)) {
-   newArr = contestants.splice(3,1); 
-   console.log(newArr);
-  // console.log(contestants);
-   // arr = newArr.push(newArr);
-  // console.log(arr, loserName);
+  for(let i = 0; i < arr.length; i++) {
+    const currentContestant = arr[i];
+    if(currentContestant === loserName) {
+      arr.splice(i,1); 
+    }
     return newArr;
+
   }
-}
-//console.log(newArr);
+  //console.log(newArr);
 }
 
-theEliminator();
+theEliminator(contestants, loser);
 
 ////////////////// PROBLEM 17 ////////////////////
 let sampleString = "Hi, my name is Kylo."
@@ -343,11 +340,10 @@ const emailCheck = (email) => {
   let emailStr = String(email);
     emailStr = emailStr.trim();
 console.log(emailStr)
-if(email.includes("@")) {
-  return "Email verified"
-} else {
-  "Must provide a valid email address"
-}
+  if(email.includes("@")) {
+    return "Email verified"
+  }
+  return "Must provide a valid email address"
 }
 let myEmail = emailCheck("jaclynfoster89@gmail.com")
 console.log(myEmail);
@@ -363,7 +359,7 @@ myFrogs = gold /= 3;
 return myFrogs
 }
 let totalFrogs = chocolateFrogs(4);
-console.log(totalFrogs);
+console.log("total frogs: ", totalFrogs);
 ////////////////// PROBLEM 20 ////////////////////
 /*
   You might have noticed a slight bug in the previous problem. If you were to pass in 4 gold, the function would return to you 1.3333... However, you can't really go to a store and by 1.333 products. You would just be able to purchase 1 product. Re-write the function you used in the previous problem (give it the same name, just add a 2 to the end of it) that fixes this bug. Invoke the function and store the returned value to a variable called `totalFrogs2`.
@@ -385,6 +381,28 @@ let sampleArray = [0,1,2,3,4,7,5,6,8,9]
 
 //CODE HERE
 const isAscending = (arr) => {
+
+  //See this link for sorts:
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+  // you can can probably use .sort() without any parameters
+  // else you can use a callback with (a, b) => {...}
+  // a will be your current element of the array, b will be your next element of the array, as seen below:
+
+  // function compareFn(a, b) {
+  //   if (a is less than b by some ordering criterion) {
+  //     return -1;
+  //   }
+  //   if (a is greater than b by the ordering criterion) {
+  //     return 1;
+  //   }
+  //   // a must be equal to b
+  //   return 0;
+  // }
+
+  // TO SOLVE THIS:
+  // you sort the array and assign it to another variable
+  // then loop over either array and use the "i" (incrementing) variable of the loop to compare both elements of that "index"
+
   for(let i = 0; i < arr.length; i++) {
     if(arr[i + 1] < arr[i]) {
       return false
@@ -394,7 +412,7 @@ const isAscending = (arr) => {
   }
 }
 let arrayIsAscending = isAscending(sampleArray);
-console.log(arrayIsAscending);
+console.log("arrayIsAscending: ", arrayIsAscending);
 
 ////////////////// PROBLEM 22 ////////////////////
 
